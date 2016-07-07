@@ -1,0 +1,35 @@
+﻿        <ion-item collection-repeat="items in results" ng-click="viewInfo(items.id)" class="no-padding">
+            <div class="row">
+                <div class="col-19 col-center text-center item item-balanced padding-2px rounded margin-right-5px">
+                    <span>{{ items.id }}</span>
+                </div>
+                <div class="col col-center wrapping-list">
+                    <span >{{ items.title }}</span>
+                </div>
+            </div>
+        </ion-item>
+        <script type="text/ng-template" id="viewbiziInfo.html">
+            <div class="modal">
+                <ion-header-bar class="bar-balanced">
+                    <h1 class="title">{{ infoStation.title }}</h1>
+                    <div class="buttons"><button class="button button-icon ion-android-close" ng-click="closeModal()" /></div>
+                </ion-header-bar>
+                <ion-content>
+                    <div ng-show="infoStation.items.length == 0"><span>Sin información</span></div>
+                    <ion-item collection-repeat="item in infoStation.items" >
+                        <div class="row no-padding">
+                            <div class="col col-13 col-center no-padding margin-right-25px">
+                                <div class="row item item-balanced circular font-1-3em h-center">
+                                    <span class="padding-vertical-8px width-100 ">{{ item.number }}</span>
+                                </div>
+                            </div>
+                            <div class="col col-center col-52 wrapping-list">
+                                <div class="row">
+                                    <span class="width-100">{{ item.description }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-item>
+                </ion-content>
+            </div>
+        </script>

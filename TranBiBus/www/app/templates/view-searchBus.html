@@ -1,0 +1,25 @@
+﻿<ion-view view-title="Buscar Bus" ng-init="init('bus_stops')" >
+    <ion-header-bar class="bar bar-subheader">
+        <div class="item item-input-inset no-padding no-border">
+            <label class="item-input-wrapper search-box padding-right-0px">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Buscar calle o parada" ng-model="txtSearch" ng-change="search(txtSearch)">
+            </label>
+            <button ng-click="cleanSearch(); txtSearch = null" class="button ion-android-close input-button button-small button-search rounded" ng-show="txtSearch.length > 0" />
+            <button ng-click="viewLines();" class="button icon ion-pull-request rounded button-positive"></button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="bg-image-bus">
+        <ion-refresher on-refresh="refresh(true)" spinner="android"></ion-refresher>
+        <ion-item collection-repeat="items in results" ng-click="viewInfo(items)" class="no-padding" item-width="100%" item-height="55px">
+            <div class="row">
+                <div class="col-19 col-center text-center item item-assertive rounded margin-right-10px">
+                    <span>{{ items.id }}</span>
+                </div>
+                <div class="col col-center wrapping-list">
+                    <span >{{ items.title }}</span>
+                </div>
+            </div>
+        </ion-item>
+    </ion-content>
+</ion-view>

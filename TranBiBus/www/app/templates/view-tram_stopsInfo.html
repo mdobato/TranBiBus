@@ -1,0 +1,40 @@
+﻿<div class="modal">
+    <ion-header-bar class="bar-positive">
+        <div class="col-20 col-center">
+            <h1 class="title-head">{{ infoStation.id }}</h1>
+        </div>
+        <div class="col-55 col-center line-height-90 h-center">
+            <span class="h-left">{{ infoStation.title2 }}</span>
+        </div>
+        <div class="col-15 buttons col-center">
+            <button ng-class="infoStation.favorite ? 'ion-android-star' : 'ion-android-star-outline'"
+                    class="button button-icon h-center energized" ng-click="addFavorite(infoStation)" />
+        </div>
+        <div class="col-10 buttons col-center">
+            <button class="button button-icon ion-android-close" ng-click="closeModal()" />
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div ng-show="infoStation.items.length == 0" class="item item-dark h-center"><span>Sin información</span></div>
+        <ion-item collection-repeat="item in infoStation.items" item-width="100%" item-height="55px">
+            <div class="row no-padding">
+                <div class="col col-13 col-center no-padding">
+                    <div class="row item item-positive circular font-1-3em h-center">
+                        <span class="padding-vertical-8px width-100 ">{{ item.id }}</span>
+                    </div>
+                </div>
+                <div class="col col-center col-52 wrapping-list">
+                    <div class="row h-center">
+                        <span class="width-100">{{ item.title }}</span>
+                    </div>
+                </div>
+                <div class="col col-center">
+                    <div class="row" ng-repeat="time in item.time track by $index">
+                        <span class="padding-vertical-2px width-100 h-center">{{ time }} min</span>
+                    </div>
+                </div>
+            </div>
+        </ion-item>
+    </ion-content>
+</div>
+        

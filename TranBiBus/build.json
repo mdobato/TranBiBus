@@ -1,0 +1,11 @@
+{
+     "android": {
+         "release": {
+             "keystore": "E:\\tranbibus.keystore",
+             "storePassword": "hal9000",
+             "alias": "mdobato",
+             "password" : "hal9000",
+             "keystoreType": ""
+         }
+     }
+ }

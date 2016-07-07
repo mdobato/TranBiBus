@@ -1,0 +1,38 @@
+﻿<ion-side-menus>
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-dark">
+            <ion-nav-back-button></ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left">
+        <header class="bar bar-header bar-dark">
+            <h1 class="title">Menu</h1>
+        </header>
+        <ion-content class="has-header">
+            <ion-list>
+                <ion-item menu-close href="#/app/home">
+                    Inicio
+                </ion-item>
+                <ion-item menu-close href="#/app/searchBus">
+                    Autobus
+                </ion-item>
+                <ion-item menu-close href="#/app/searchTranvia">
+                    Tranvía
+                </ion-item>
+                <ion-item menu-close href="#/app/searchBizi">
+                    Bizi
+                </ion-item>
+                <ion-item menu-close href="#/app/favorites">
+                    Favoritos
+                </ion-item>
+                <ion-item menu-close href="#/app/map">
+                    Mapa Urbano
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

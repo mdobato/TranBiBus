@@ -1,0 +1,52 @@
+﻿<ion-view view-title="Información de líneas" ng-init="init('bus_stops')">
+    <ion-header-bar class="bar bar-subheader">
+        <div class="row">
+            <div class="list col-90 margin-bottom-0px">
+                <label class="item item-input item-select">
+                    <div class="input-label font-0-8em">
+                        Línea:
+                    </div>
+                    <select class="font-0-8em max-width-85 padding-left-5px" ng-model="selectedLineValue" ng-options="line.value as line.key for line in lines" ng-change="getLine(selectedLineValue)"></select>
+                </label>
+            </div>
+            <div class="col-8 text-center">
+                <button ng-class="directionUp() ? 'ion-arrow-up-a' : 'ion-arrow-down-a'" ng-disabled="(currentLine == undefined || !has2Directions)" ng-click="toggleDirection()" class="icon button margin-left-4px rounded min-width-28px padding-3px line-height-42px"></button>
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content class="margin-top-20px">
+        
+        <div ng-if="(firstTitle != '')" class="row height-50px">
+            <div class="col-15 text-center">
+            </div>
+            <div class="col-10 text-center img-node-line height-100">
+                <img class="col-center margin-top--3px" src="images/nodoInicio.png" />
+            </div>
+            <div class="col-70">
+                <h4 class="margin-top-0px">{{ firstTitle }}</h4>
+            </div>
+        </div>
+        <div class="row height-50px" ng-repeat="item in infoLine track by $index" ng-click="goDataInfo(item)">
+            <div class="col-15 text-center">
+                <span class="red-item circular">{{ item.id }}</span>
+            </div>
+            <div class="col-10 col-top text-center img-node-line height-100">
+                <img class="col-top" src="images/nodo.png" />
+            </div>
+            <div class="col-70">
+                <span>{{ item.title }}</span>
+            </div>
+        </div>
+        <div ng-if="(lastTitle != '')" class="row height-50px">
+            <div class="col-15 text-center">
+            </div>
+            <div class="col-10 text-center height-100">
+                <img class="col-bottom" src="images/nodoInicio.png" />
+            </div>
+            <div class="col-70">
+                <h4 class="margin-top-0px">{{ lastTitle }}</h4>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,41 @@
+﻿<ion-view view-title="TranBiBus" ng-init="init()">
+    <ion-content>
+        <div id="map_canvas" >
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" data-tap-disabled="true" >
+                <ui-gmap-polyline ng-repeat="pLine in routes track by pLine.id" path="pLine.path" stroke="pLine.stroke"
+                                  geodesic='false' static="true" fit="false" editable="false" >
+                </ui-gmap-polyline>
+                <ui-gmap-markers models="places" doCluster="false" coords="'self'" icon="'icon'" idKey="'idKey'" isLabel='true'
+                                 events="map.markersEvents" options="'options'" modelsbyref="false">
+                </ui-gmap-markers>
+                <ui-gmap-window show="map.window.show" coords="map.window.model" options="map.window.options" closeClick="map.window.closeClick()"
+                                templateUrl="'app/templates/view-markerInfo.html'" templateParameter="map.window">
+                </ui-gmap-window>
+            </ui-gmap-google-map>
+        </div>
+    </ion-content>
+
+    <ion-drawer-vertical-wrapper direction="up" state="closed" class="has-header dark-bg" autoclose-on-scroll>
+        <ion-drawer-vertical-content>
+            <button ng-repeat="line in busLines" ng-class="line.swtOn ? 'btnOn' : 'btnOff'" class="button-small min-width-30px rounded margin-1px"
+                     ng-click="line.swtOn = !line.swtOn; clickBusLineBtn(line);">{{line.key}}</button>
+        </ion-drawer-vertical-content>
+        <ion-drawer-vertical-handle />
+    </ion-drawer-vertical-wrapper>
+
+    <div class="bar bar-footer bar-dark ">
+        <div class="row">
+            <div class="col-50" >
+                <button ng-class="busOn ? 'btnOn' : 'btnOff'" class="button icon ion-android-bus rounded" ng-click="clickBtn('bus', busOn);">
+                    <i class="icon ion-ios-arrow-down" ng-show="drawerIs('opened')"></i>
+                    <i class="icon ion-ios-loop" ng-show="!drawerIs('opened') && !drawerIs('closed')"></i>
+                    <i class="icon ion-ios-arrow-up" ng-show="drawerIs('closed')"></i>
+                </button>
+                <button ng-class="biziOn ? 'btnOn' : 'btnOff'" class="button icon ion-android-bicycle rounded" ng-click="biziOn = !biziOn; clickBtn('bizi', biziOn);"></button>
+                <button ng-class="tranviaOn ? 'btnOn' : 'btnOff'" class="button icon ion-android-subway rounded" ng-click="tranviaOn = !tranviaOn; clickBtn('tram', tranviaOn);"></button>
+            </div>
+        </div>
+    </div>
+</ion-view>
+
+

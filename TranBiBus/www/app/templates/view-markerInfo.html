@@ -1,0 +1,13 @@
+﻿<div class='map-popup'>
+    <div class="row padding-3px" ng-click='parameter.goInfo(parameter.model)' >
+        <span ng-class="parameter.model.view=='bus' ? 'red-item' : parameter.model.view=='bizi' ? 'green-item' : 'blue-item'" 
+              class="rounded padding-horizontal-5px margin-right-5px"> {{ parameter.model.id }}</span><span class="font-0-8em">{{ parameter.model.title }} </span>
+    </div>
+    <div ng-if="parameter.model.view=='bus'" class="padding-3px">
+        <div class="margin-top-4px"><span class="font-0-8em">Paradas</span></div>
+        <span ng-repeat="line in parameter.model.lines">
+            <span class="red-item circular" ng-click='parameter.goLine(line)'>{{ line }}</span>
+        </span>
+    </div>
+</div>
+        
